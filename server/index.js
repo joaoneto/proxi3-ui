@@ -3,6 +3,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 9000;
 const rootDir = process.cwd();
+const compression = require('compression');
 
 const proxyApiUrl = process.env.API_URL;
 const proxi3 = require('proxi3');
@@ -18,7 +19,8 @@ const proxi3Config = {
 };
 
 const proxi3App = proxi3.app({ proxyApiUrl, proxi3Config });
-proxi3.events.on('log', (data) => {
+proxi3App.use(compression({}));
+proxi3.logging.on('logging', (data) => {
   console.log(data);
 });
 proxi3App.listen(3000, '0.0.0.0');

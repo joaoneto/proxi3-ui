@@ -3,6 +3,7 @@
   "description": "Proxi3 React User Interface",
   "version": "0.0.1",
   "dependencies": {
+    "compression": "^1.7.4",
     "express": "^4.16.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
