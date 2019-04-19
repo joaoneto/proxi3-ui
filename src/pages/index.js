@@ -1,5 +1,6 @@
-import Home from './Home';
+import React from 'react';
+import { Home } from './home';
 
-export (props) => {
+export default (props) => {
   return <Home {...props} />;
 };

@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import Pages from 'pages';
+import { Proxi3Provider } from './components';
+import Pages from './pages';
 
-import './App.css';
+import './app.styles.css';
 
 class App extends Component {
   render() {
     return (
       <div className="app">
-        <Pages />
+        <Proxi3Provider>
+          <Pages />
+        </Proxi3Provider>
       </div>
     );
   }
