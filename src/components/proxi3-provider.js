@@ -3,8 +3,6 @@ import socketIOClient from 'socket.io-client';
 
 const Proxi3Context = React.createContext();
 
-export const Proxi3Consumer = Proxi3Context.Consumer;
-
 export default class Proxi3Provider extends Component {
   constructor(props) {
     super(props);
@@ -20,12 +18,10 @@ export default class Proxi3Provider extends Component {
   }
 
   componentDidMount() {
-    console.log('on proxi3:request');
     this.socket.on('proxi3:request', this.handleMessage);
   }
 
   componentWillUnmount() {
-    console.log('off proxi3:request');
     this.socket.off('proxi3:request', this.handleMessage);
   }
 
@@ -36,6 +32,6 @@ export default class Proxi3Provider extends Component {
   }
 }
 
-export const withSocket = (Component) => (props) => <Proxi3Consumer>
+export const withProxi3 = (Component) => (props) => <Proxi3Context.Consumer>
   {(context) => <Component {...context} {...props} />}
-</Proxi3Consumer>;
+</Proxi3Context.Consumer>;

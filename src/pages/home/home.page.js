@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react';
-import { RequestList } from '../../components';
+import { RequestList, withProxi3 } from '../../components';
 import './home.styles.css';
 
-export default class extends Component {
+export default withProxi3(class extends Component {
   render() {
     return <Fragment>
-      <RequestList />
+      <RequestList requests={this.props.requests} />
     </Fragment>;
   }
-};
+})

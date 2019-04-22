@@ -29,13 +29,11 @@ const proxi3Config = {
 };
 
 const proxi3App = proxi3.app({ proxyApiUrl, proxi3Config });
-proxi3App.use(compression({}));
 proxi3App.listen(3000, '0.0.0.0');
 
+app.use(compression({}));
 app.use(express.static(path.join(rootDir, 'build')));
-
 app.get('/', (req, res) => {
   res.sendFile(path.join(rootDir, 'build', 'index.html'));
 });
-
 server.listen(PORT);
