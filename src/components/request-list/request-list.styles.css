@@ -1,0 +1,17 @@
+.request-list {
+}
+.request-list .request {
+  display: flex;
+  cursor: pointer;
+  padding: 0 .5rem;
+}
+.request-list .request .request__method,
+.request-list .request .request__url {
+  padding: .5rem;
+}
+.request-list .request .request__method {
+  flex: 0 1 auto;
+}
+.request-list .request .request__url {
+  flex: 1 0 auto;
+}
