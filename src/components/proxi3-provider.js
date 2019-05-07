@@ -7,10 +7,13 @@ export default class Proxi3Provider extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      requests: []
+      requests: [],
+      inspectRequest: null
     };
     this.socket = socketIOClient('http://localhost:8080');
     this.handleMessage = this.handleMessage.bind(this);
+    this.setInpectRequest = this.setInpectRequest.bind(this);
+    this.unsetInpectRequest = this.unsetInpectRequest.bind(this);
   }
 
   handleMessage(request) {
@@ -25,8 +28,20 @@ export default class Proxi3Provider extends Component {
     this.socket.off('proxi3:request', this.handleMessage);
   }
 
+  setInpectRequest(request) {
+    this.setState({ inspectRequest: request });
+  }
+
+  unsetInpectRequest() {
+    this.setState({ inspectRequest: null });
+  }
+
   render() {
-    return <Proxi3Context.Provider value={this.state}>
+    return <Proxi3Context.Provider value={{
+      ...this.state,
+      setInpectRequest: this.setInpectRequest,
+      unsetInpectRequest: this.unsetInpectRequest,
+    }}>
       {this.props.children}
     </Proxi3Context.Provider>;
   }
