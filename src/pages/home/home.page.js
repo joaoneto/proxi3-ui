@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { RequestList, RequestDetails, withProxi3 } from '../../components';
 import './home.styles.css';
 
@@ -9,14 +9,13 @@ export default withProxi3(class extends Component {
   }
 
   openRequestDetails(request) {
-    console.log(request);
     this.props.setInpectRequest(request);
   }
 
   render() {
-    return <Fragment>
+    return <div className="home">
       <RequestList requests={this.props.requests} onRequestClick={this.openRequestDetails} />
       {this.props.inspectRequest && <RequestDetails request={this.props.inspectRequest} />}
-    </Fragment>;
+    </div>;
   }
 })
