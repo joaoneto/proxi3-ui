@@ -1,6 +1,6 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
-class Highlighter extends PureComponent {
+class Higlighter extends Component {
   componentDidMount() {
     window.hljs.configure({ useBR: false });
     window.hljs.highlightBlock(this.node);
@@ -13,4 +13,4 @@ class Highlighter extends PureComponent {
   }
 }
 
-export default Highlighter;
+export default Higlighter;

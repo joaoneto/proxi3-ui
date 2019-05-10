@@ -15,7 +15,7 @@ export default withProxi3(class extends Component {
   render() {
     return <div className="home">
       <RequestList requests={this.props.requests} onRequestClick={this.openRequestDetails} />
-      {this.props.inspectRequest && <RequestDetails request={this.props.inspectRequest} />}
+      <RequestDetails request={this.props.inspectRequest} />
     </div>;
   }
 })

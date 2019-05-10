@@ -3,5 +3,24 @@
   right: 0;
   top: 0;
   bottom: 0;
+  background-color: white;
+}
+.request-details__wrap {
+  display: flex;
   width: 320px;
+  height: 100%;
+}
+.request-details__drag-area {
+  flex: 0 0 6px;
+}
+.request-details__content {
+  flex: 1 1 auto;
+  overflow: auto;
+}
+.request-details__drag-area {
+  background-color: #c0c0c0;
+  cursor: col-resize;
+}
+.request-details__drag-area:hover {
+  background-color: #c0c0c0;
 }

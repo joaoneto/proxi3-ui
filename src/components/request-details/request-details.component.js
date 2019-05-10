@@ -1,34 +1,41 @@
 import React, { Component } from 'react';
+import { Resizer } from '../resizer';
+import { Higlighter } from '../highlighter';
 import './request-details.styles.css';
 
 class RequestDetails extends Component {
   constructor(props) {
     super(props);
+    this.node = React.createRef();
     this.state = {};
-
-    this.elementRef = React.createRef();
-
-    this.handleMouseDown = this.handleMouseDown.bind(this);
-    this.handleMouseUp = this.handleMouseUp.bind(this);
+    this.handleResize = this.handleResize.bind(this);
   }
 
-  isCloseToResizeArea(e) {
-    if (e.movementX > )
-  }
-
-  handleMouseDown(e) {
-    console.log('mouse down', e);
-  }
-
-  handleMouseUp(e) {
-    console.log('mouse up', e);
+  handleResize(width) {
+    this.setState({ width: width + 'px' });
   }
 
   render() {
+    if (!this.props.request) return null;
     const { width } = this.state;
-    return <div className="request-details" style={{ width: width }} onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp}>
-      <p>Details</p>
-      {JSON.stringify(this.props.request)}
+    return <div className="request-details">
+      <div ref={this.node} className="request-details__wrap" style={{ width: width }}>
+        <Resizer
+          className="request-details__drag-area"
+          risizeElementRef={this.node}
+          onResize={this.handleResize}
+        />
+        <div className="request-details__content">
+          <h4>Request Payload</h4>
+          <pre>
+            {JSON.stringify(this.props.request.request, null, 2)}
+          </pre>
+          <h4>Response Payload</h4>
+          <pre>
+            {JSON.stringify(this.props.request.response, null, 2)}
+          </pre>
+        </div>
+      </div>
     </div>;
   }
 }
