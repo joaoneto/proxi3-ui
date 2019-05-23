@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Resizer } from '../resizer';
-import { Higlighter } from '../highlighter';
+import Highlight from 'react-highlight';
 import './request-details.styles.css';
 
 class RequestDetails extends Component {
@@ -27,13 +27,13 @@ class RequestDetails extends Component {
         />
         <div className="request-details__content">
           <h4>Request Payload</h4>
-          <pre>
+          <Highlight>
             {JSON.stringify(this.props.request.request, null, 2)}
-          </pre>
+          </Highlight>
           <h4>Response Payload</h4>
-          <pre>
+          <Highlight>
             {JSON.stringify(this.props.request.response, null, 2)}
-          </pre>
+          </Highlight>
         </div>
       </div>
     </div>;

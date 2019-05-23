@@ -1,4 +1,3 @@
-export * from './highlighter';
 export * from './request-list';
 export * from './request-details';
 export * from './resizer';
